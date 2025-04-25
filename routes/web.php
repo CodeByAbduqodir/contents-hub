@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContentController;
 
 Route::get('/', function () {
-    $users = \App\Models\User::all();
-    return view('welcome', ['users' => $users]);
+    return view('welcome');
 });
+
+Route::resource('contents', ContentController::class);
