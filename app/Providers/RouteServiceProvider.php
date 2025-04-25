@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    public const HOME = '/';
+    public const HOME = '/admin'; // Изменили на /admin
 
     public function boot(): void
     {
@@ -27,7 +27,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
 
             Route::middleware('web')
-                ->group(base_path('routes/auth.php')); // Эта строка должна быть
+                ->group(base_path('routes/auth.php'));
         });
     }
 }

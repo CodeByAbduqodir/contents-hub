@@ -14,6 +14,7 @@
     <div class="auth-links">
         @auth
             <span>Welcome, {{ Auth::user()->name }}!</span>
+            <a href="{{ route('admin.dashboard') }}">Admin Dashboard</a> |
             <form action="{{ route('logout') }}" method="POST" style="display:inline;">
                 @csrf
                 <button type="submit">Logout</button>
