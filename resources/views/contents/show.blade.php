@@ -2,8 +2,23 @@
 <html>
 <head>
     <title>View Content</title>
+    <style>
+        .auth-links { margin-bottom: 20px; }
+    </style>
 </head>
 <body>
+    <div class="auth-links">
+        @auth
+            <span>Welcome, {{ Auth::user()->name }}!</span>
+            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                @csrf
+                <button type="submit">Logout</button>
+            </form>
+        @else
+            <a href="{{ route('login') }}">Login</a>
+        @endauth
+    </div>
+
     <h1>{{ $content->title }}</h1>
 
     <p><strong>Type:</strong> {{ $content->type }}</p>
@@ -13,6 +28,6 @@
     <p><strong>Genres:</strong> {{ $content->genres->pluck('name')->implode(', ') }}</p>
     <p><strong>Societies:</strong> {{ $content->societies->pluck('name')->implode(', ') }}</p>
 
-    <a href="{{ route('contents.index') }}">Back to List</a>
+    <a href="{{ route('home') }}">Back to Home</a>
 </body>
 </html>

@@ -2,8 +2,23 @@
 <html>
 <head>
     <title>Edit Content</title>
+    <style>
+        .auth-links { margin-bottom: 20px; }
+    </style>
 </head>
 <body>
+    <div class="auth-links">
+        @auth
+            <span>Welcome, {{ Auth::user()->name }}!</span>
+            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                @csrf
+                <button type="submit">Logout</button>
+            </form>
+        @else
+            <a href="{{ route('login') }}">Login</a>
+        @endauth
+    </div>
+
     <h1>Edit Content: {{ $content->title }}</h1>
 
     <form action="{{ route('contents.update', $content->id) }}" method="POST">
