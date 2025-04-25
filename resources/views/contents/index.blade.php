@@ -43,8 +43,8 @@
                     <tr>
                         <td>{{ $content->type }}</td>
                         <td>{{ $content->title }}</td>
-                        <td>{{ $content->description ?? 'N/A' }}</td>
-                        <td>{{ $content->url ?? 'N/A' }}</td>
+                        <td>{{ $content->description ?? 'Not Available' }}</td>
+                        <td>{{ $content->url ?? 'Not Available' }}</td>
                         <td>{{ $content->authors->pluck('name')->implode(', ') }}</td>
                         <td>{{ $content->genres->pluck('name')->implode(', ') }}</td>
                         <td>{{ $content->societies->pluck('name')->implode(', ') }}</td>
@@ -64,5 +64,7 @@
 
         {{ $contents->links() }}
     @endif
+
+    <a href="{{ route('home') }}">Back to Home</a>
 </body>
 </html>

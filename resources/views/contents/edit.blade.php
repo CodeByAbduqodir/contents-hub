@@ -34,6 +34,39 @@
             <input type="url" name="url" id="url" value="{{ $content->url }}">
         </div>
 
+        <div>
+            <label for="authors">Authors:</label>
+            <select name="authors[]" id="authors" multiple required>
+                @foreach ($authors as $author)
+                    <option value="{{ $author->id }}" {{ $content->authors->contains($author->id) ? 'selected' : '' }}>
+                        {{ $author->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
+        <div>
+            <label for="genres">Genres:</label>
+            <select name="genres[]" id="genres" multiple required>
+                @foreach ($genres as $genre)
+                    <option value="{{ $genre->id }}" {{ $content->genres->contains($genre->id) ? 'selected' : '' }}>
+                        {{ $genre->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
+        <div>
+            <label for="societies">Societies:</label>
+            <select name="societies[]" id="societies" multiple required>
+                @foreach ($societies as $society)
+                    <option value="{{ $society->id }}" {{ $content->societies->contains($society->id) ? 'selected' : '' }}>
+                        {{ $society->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
         <button type="submit">Update</button>
     </form>
 

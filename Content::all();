@@ -1,0 +1,288 @@
+[90m= [39m[34;4mIlluminate\Database\Eloquent\Collection[39;24m {#6257
+    [34mall[39m: [
+      [34;4mApp\Models\Content[39;24m {#6231
+        [34mid[39m: [35m2[39m,
+        [34mtype[39m: "[32mvideo[39m",
+        [34mtitle[39m: "[32mOsmondagi Bolalar[39m",
+        [34mdescription[39m: "[32mSome Description[39m",
+        [34murl[39m: "[32mhttps://youtube.com/osmondagi[39m",
+        [34mcreated_at[39m: "[32m2025-04-25 10:18:53[39m",
+        [34mupdated_at[39m: "[32m2025-04-25 10:18:53[39m",
+        [34mauthors[39m: [34;4mIlluminate\Database\Eloquent\Collection[39;24m {#6223
+          [34mall[39m: [],
+        },
+        [34mgenres[39m: [34;4mIlluminate\Database\Eloquent\Collection[39;24m {#6225
+          [34mall[39m: [],
+        },
+        [34msocieties[39m: [34;4mIlluminate\Database\Eloquent\Collection[39;24m {#6238
+          [34mall[39m: [],
+        },
+      },
+      [34;4mApp\Models\Content[39;24m {#6232
+        [34mid[39m: [35m3[39m,
+        [34mtype[39m: "[32mvideo[39m",
+        [34mtitle[39m: "[32mHayotimni O’zgartirgan Kitoblar[39m",
+        [34mdescription[39m: "[32mПодкаст про книги, которые изменили жизнь[39m",
+        [34murl[39m: "[32mhttps://youtube.com/hayotimni[39m",
+        [34mcreated_at[39m: "[32m2025-04-25 11:04:40[39m",
+        [34mupdated_at[39m: "[32m2025-04-25 11:04:40[39m",
+        [34mauthors[39m: [34;4mIlluminate\Database\Eloquent\Collection[39;24m {#6242
+          [34mall[39m: [
+            [34;4mApp\Models\Author[39;24m {#6249
+              [34mid[39m: [35m2[39m,
+              [34mname[39m: "[32mDilshod Usmonov[39m",
+              [34murl[39m: "[32mhttps://example.com/dilshod[39m",
+              [34mcreated_at[39m: "[32m2025-04-25 11:04:40[39m",
+              [34mupdated_at[39m: "[32m2025-04-25 11:04:40[39m",
+              [34mpivot[39m: [34;4mIlluminate\Database\Eloquent\Relations\Pivot[39;24m {#6243
+                [34mcontent_id[39m: [35m3[39m,
+                [34mauthor_id[39m: [35m2[39m,
+              },
+            },
+          ],
+        },
+        [34mgenres[39m: [34;4mIlluminate\Database\Eloquent\Collection[39;24m {#6258
+          [34mall[39m: [
+            [34;4mApp\Models\Genre[39;24m {#6268
+              [34mid[39m: [35m2[39m,
+              [34mname[39m: "[32mInterviews[39m",
+              [34mcreated_at[39m: "[32m2025-04-25 11:04:40[39m",
+              [34mupdated_at[39m: "[32m2025-04-25 11:04:40[39m",
+              [34mpivot[39m: [34;4mIlluminate\Database\Eloquent\Relations\Pivot[39;24m {#6262
+                [34mcontent_id[39m: [35m3[39m,
+                [34mgenre_id[39m: [35m2[39m,
+              },
+            },
+          ],
+        },
+        [34msocieties[39m: [34;4mIlluminate\Database\Eloquent\Collection[39;24m {#6276
+          [34mall[39m: [
+            [34;4mApp\Models\Society[39;24m {#6155
+              [34mid[39m: [35m2[39m,
+              [34mname[39m: "[32m1% bilim[39m",
+              [34murl[39m: "[32mhttps://example.com/1bilim[39m",
+              [34mcreated_at[39m: "[32m2025-04-25 11:04:40[39m",
+              [34mupdated_at[39m: "[32m2025-04-25 11:04:40[39m",
+              [34mpivot[39m: [34;4mIlluminate\Database\Eloquent\Relations\Pivot[39;24m {#6461
+                [34mcontent_id[39m: [35m3[39m,
+                [34msociety_id[39m: [35m2[39m,
+              },
+            },
+          ],
+        },
+      },
+      [34;4mApp\Models\Content[39;24m {#6233
+        [34mid[39m: [35m4[39m,
+        [34mtype[39m: "[32mbook[39m",
+        [34mtitle[39m: "[32mXamsa[39m",
+        [34mdescription[39m: "[32mКлассическое произведение узбекской литературы[39m",
+        [34murl[39m: [36mnull[39m,
+        [34mcreated_at[39m: "[32m2025-04-25 11:04:44[39m",
+        [34mupdated_at[39m: "[32m2025-04-25 11:04:44[39m",
+        [34mauthors[39m: [34;4mIlluminate\Database\Eloquent\Collection[39;24m {#6237
+          [34mall[39m: [
+            [34;4mApp\Models\Author[39;24m {#6247
+              [34mid[39m: [35m3[39m,
+              [34mname[39m: "[32mAlisher Navoiy[39m",
+              [34murl[39m: [36mnull[39m,
+              [34mcreated_at[39m: "[32m2025-04-25 11:04:44[39m",
+              [34mupdated_at[39m: "[32m2025-04-25 11:04:44[39m",
+              [34mpivot[39m: [34;4mIlluminate\Database\Eloquent\Relations\Pivot[39;24m {#6244
+                [34mcontent_id[39m: [35m4[39m,
+                [34mauthor_id[39m: [35m3[39m,
+              },
+            },
+          ],
+        },
+        [34mgenres[39m: [34;4mIlluminate\Database\Eloquent\Collection[39;24m {#6256
+          [34mall[39m: [
+            [34;4mApp\Models\Genre[39;24m {#6266
+              [34mid[39m: [35m3[39m,
+              [34mname[39m: "[32mClassics[39m",
+              [34mcreated_at[39m: "[32m2025-04-25 11:04:44[39m",
+              [34mupdated_at[39m: "[32m2025-04-25 11:04:44[39m",
+              [34mpivot[39m: [34;4mIlluminate\Database\Eloquent\Relations\Pivot[39;24m {#6267
+                [34mcontent_id[39m: [35m4[39m,
+                [34mgenre_id[39m: [35m3[39m,
+              },
+            },
+          ],
+        },
+        [34msocieties[39m: [34;4mIlluminate\Database\Eloquent\Collection[39;24m {#6274
+          [34mall[39m: [
+            [34;4mApp\Models\Society[39;24m {#6153
+              [34mid[39m: [35m3[39m,
+              [34mname[39m: "[32mUzbek Literature[39m",
+              [34murl[39m: [36mnull[39m,
+              [34mcreated_at[39m: "[32m2025-04-25 11:04:44[39m",
+              [34mupdated_at[39m: "[32m2025-04-25 11:04:44[39m",
+              [34mpivot[39m: [34;4mIlluminate\Database\Eloquent\Relations\Pivot[39;24m {#6154
+                [34mcontent_id[39m: [35m4[39m,
+                [34msociety_id[39m: [35m3[39m,
+              },
+            },
+          ],
+        },
+      },
+      [34;4mApp\Models\Content[39;24m {#6234
+        [34mid[39m: [35m5[39m,
+        [34mtype[39m: "[32maudio[39m",
+        [34mtitle[39m: "[32mHarry Potter Audiobook[39m",
+        [34mdescription[39m: "[32mАудиокнига про Гарри Поттера[39m",
+        [34murl[39m: "[32mhttps://example.com/harrypotter-audio[39m",
+        [34mcreated_at[39m: "[32m2025-04-25 11:04:52[39m",
+        [34mupdated_at[39m: "[32m2025-04-25 11:04:52[39m",
+        [34mauthors[39m: [34;4mIlluminate\Database\Eloquent\Collection[39;24m {#6471
+          [34mall[39m: [
+            [34;4mApp\Models\Author[39;24m {#6250
+              [34mid[39m: [35m4[39m,
+              [34mname[39m: "[32mJoanne Rowling[39m",
+              [34murl[39m: "[32mhttps://example.com/jkrowling[39m",
+              [34mcreated_at[39m: "[32m2025-04-25 11:04:52[39m",
+              [34mupdated_at[39m: "[32m2025-04-25 11:04:52[39m",
+              [34mpivot[39m: [34;4mIlluminate\Database\Eloquent\Relations\Pivot[39;24m {#6246
+                [34mcontent_id[39m: [35m5[39m,
+                [34mauthor_id[39m: [35m4[39m,
+              },
+            },
+          ],
+        },
+        [34mgenres[39m: [34;4mIlluminate\Database\Eloquent\Collection[39;24m {#6254
+          [34mall[39m: [
+            [34;4mApp\Models\Genre[39;24m {#6269
+              [34mid[39m: [35m4[39m,
+              [34mname[39m: "[32mFantasy[39m",
+              [34mcreated_at[39m: "[32m2025-04-25 11:04:52[39m",
+              [34mupdated_at[39m: "[32m2025-04-25 11:04:52[39m",
+              [34mpivot[39m: [34;4mIlluminate\Database\Eloquent\Relations\Pivot[39;24m {#6263
+                [34mcontent_id[39m: [35m5[39m,
+                [34mgenre_id[39m: [35m4[39m,
+              },
+            },
+          ],
+        },
+        [34msocieties[39m: [34;4mIlluminate\Database\Eloquent\Collection[39;24m {#6272
+          [34mall[39m: [
+            [34;4mApp\Models\Society[39;24m {#6156
+              [34mid[39m: [35m4[39m,
+              [34mname[39m: "[32mBook Lovers[39m",
+              [34murl[39m: "[32mhttps://example.com/booklovers[39m",
+              [34mcreated_at[39m: "[32m2025-04-25 11:04:52[39m",
+              [34mupdated_at[39m: "[32m2025-04-25 11:04:52[39m",
+              [34mpivot[39m: [34;4mIlluminate\Database\Eloquent\Relations\Pivot[39;24m {#6150
+                [34mcontent_id[39m: [35m5[39m,
+                [34msociety_id[39m: [35m4[39m,
+              },
+            },
+          ],
+        },
+      },
+      [34;4mApp\Models\Content[39;24m {#6235
+        [34mid[39m: [35m6[39m,
+        [34mtype[39m: "[32mvideo[39m",
+        [34mtitle[39m: "[32mIntroduction to Laravel[39m",
+        [34mdescription[39m: "[32mЛекция о фреймворке Laravel[39m",
+        [34murl[39m: "[32mhttps://youtube.com/laravel-intro[39m",
+        [34mcreated_at[39m: "[32m2025-04-25 11:04:57[39m",
+        [34mupdated_at[39m: "[32m2025-04-25 11:04:57[39m",
+        [34mauthors[39m: [34;4mIlluminate\Database\Eloquent\Collection[39;24m {#6472
+          [34mall[39m: [
+            [34;4mApp\Models\Author[39;24m {#6251
+              [34mid[39m: [35m5[39m,
+              [34mname[39m: "[32mSherzod Karimov[39m",
+              [34murl[39m: "[32mhttps://example.com/sherzod[39m",
+              [34mcreated_at[39m: "[32m2025-04-25 11:04:57[39m",
+              [34mupdated_at[39m: "[32m2025-04-25 11:04:57[39m",
+              [34mpivot[39m: [34;4mIlluminate\Database\Eloquent\Relations\Pivot[39;24m {#6245
+                [34mcontent_id[39m: [35m6[39m,
+                [34mauthor_id[39m: [35m5[39m,
+              },
+            },
+          ],
+        },
+        [34mgenres[39m: [34;4mIlluminate\Database\Eloquent\Collection[39;24m {#6253
+          [34mall[39m: [
+            [34;4mApp\Models\Genre[39;24m {#6270
+              [34mid[39m: [35m5[39m,
+              [34mname[39m: "[32mEducation[39m",
+              [34mcreated_at[39m: "[32m2025-04-25 11:04:57[39m",
+              [34mupdated_at[39m: "[32m2025-04-25 11:04:57[39m",
+              [34mpivot[39m: [34;4mIlluminate\Database\Eloquent\Relations\Pivot[39;24m {#6265
+                [34mcontent_id[39m: [35m6[39m,
+                [34mgenre_id[39m: [35m5[39m,
+              },
+            },
+          ],
+        },
+        [34msocieties[39m: [34;4mIlluminate\Database\Eloquent\Collection[39;24m {#6261
+          [34mall[39m: [
+            [34;4mApp\Models\Society[39;24m {#6157
+              [34mid[39m: [35m5[39m,
+              [34mname[39m: "[32mTashkent IT Hub[39m",
+              [34murl[39m: "[32mhttps://example.com/tashkent-it[39m",
+              [34mcreated_at[39m: "[32m2025-04-25 11:04:57[39m",
+              [34mupdated_at[39m: "[32m2025-04-25 11:04:57[39m",
+              [34mpivot[39m: [34;4mIlluminate\Database\Eloquent\Relations\Pivot[39;24m {#6152
+                [34mcontent_id[39m: [35m6[39m,
+                [34msociety_id[39m: [35m5[39m,
+              },
+            },
+          ],
+        },
+      },
+      [34;4mApp\Models\Content[39;24m {#6236
+        [34mid[39m: [35m7[39m,
+        [34mtype[39m: "[32maudio[39m",
+        [34mtitle[39m: "[32mFuture of Space Travel[39m",
+        [34mdescription[39m: "[32mПодкаст о космических путешествиях[39m",
+        [34murl[39m: "[32mhttps://example.com/space-travel-audio[39m",
+        [34mcreated_at[39m: "[32m2025-04-25 11:05:02[39m",
+        [34mupdated_at[39m: "[32m2025-04-25 11:05:02[39m",
+        [34mauthors[39m: [34;4mIlluminate\Database\Eloquent\Collection[39;24m {#6224
+          [34mall[39m: [
+            [34;4mApp\Models\Author[39;24m {#6252
+              [34mid[39m: [35m6[39m,
+              [34mname[39m: "[32mElon Musk[39m",
+              [34murl[39m: "[32mhttps://example.com/elonmusk[39m",
+              [34mcreated_at[39m: "[32m2025-04-25 11:05:02[39m",
+              [34mupdated_at[39m: "[32m2025-04-25 11:05:02[39m",
+              [34mpivot[39m: [34;4mIlluminate\Database\Eloquent\Relations\Pivot[39;24m {#6240
+                [34mcontent_id[39m: [35m7[39m,
+                [34mauthor_id[39m: [35m6[39m,
+              },
+            },
+          ],
+        },
+        [34mgenres[39m: [34;4mIlluminate\Database\Eloquent\Collection[39;24m {#6255
+          [34mall[39m: [
+            [34;4mApp\Models\Genre[39;24m {#6271
+              [34mid[39m: [35m6[39m,
+              [34mname[39m: "[32mTechnology[39m",
+              [34mcreated_at[39m: "[32m2025-04-25 11:05:02[39m",
+              [34mupdated_at[39m: "[32m2025-04-25 11:05:02[39m",
+              [34mpivot[39m: [34;4mIlluminate\Database\Eloquent\Relations\Pivot[39;24m {#6264
+                [34mcontent_id[39m: [35m7[39m,
+                [34mgenre_id[39m: [35m6[39m,
+              },
+            },
+          ],
+        },
+        [34msocieties[39m: [34;4mIlluminate\Database\Eloquent\Collection[39;24m {#6273
+          [34mall[39m: [
+            [34;4mApp\Models\Society[39;24m {#6158
+              [34mid[39m: [35m6[39m,
+              [34mname[39m: "[32mInnovators Club[39m",
+              [34murl[39m: "[32mhttps://example.com/innovators[39m",
+              [34mcreated_at[39m: "[32m2025-04-25 11:05:02[39m",
+              [34mupdated_at[39m: "[32m2025-04-25 11:05:02[39m",
+              [34mpivot[39m: [34;4mIlluminate\Database\Eloquent\Relations\Pivot[39;24m {#6151
+                [34mcontent_id[39m: [35m7[39m,
+                [34msociety_id[39m: [35m6[39m,
+              },
+            },
+          ],
+        },
+      },
+    ],
+  }
+

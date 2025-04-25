@@ -33,6 +33,33 @@
             <input type="url" name="url" id="url">
         </div>
 
+        <div>
+            <label for="authors">Authors:</label>
+            <select name="authors[]" id="authors" multiple required>
+                @foreach ($authors as $author)
+                    <option value="{{ $author->id }}">{{ $author->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div>
+            <label for="genres">Genres:</label>
+            <select name="genres[]" id="genres" multiple required>
+                @foreach ($genres as $genre)
+                    <option value="{{ $genre->id }}">{{ $genre->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div>
+            <label for="societies">Societies:</label>
+            <select name="societies[]" id="societies" multiple required>
+                @foreach ($societies as $society)
+                    <option value="{{ $society->id }}">{{ $society->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
         <button type="submit">Create</button>
     </form>
 
