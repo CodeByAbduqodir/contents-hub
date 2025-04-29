@@ -15,7 +15,7 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::post('logout', [CustomAuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-    Route::get('contents', [ContentController::class, 'index'])->name('contents.index'); // Добавили этот маршрут
+    Route::get('contents', [ContentController::class, 'index'])->name('contents.index'); 
     Route::get('contents/create', [ContentController::class, 'create'])->name('contents.create');
     Route::post('contents', [ContentController::class, 'store'])->name('contents.store');
     Route::get('contents/{content}/edit', [ContentController::class, 'edit'])->name('contents.edit')->where('content', '[0-9]+');

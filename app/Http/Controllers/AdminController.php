@@ -31,6 +31,27 @@ class AdminController extends Controller
         return redirect()->route('admin.dashboard')->with('success', 'Author created successfully.');
     }
 
+    public function editAuthor(Author $author)
+    {
+        return view('admin.edit-content-data', [
+            'entity' => $author,
+            'entity_type' => 'author',
+            'route' => 'admin.authors.update',
+            'title' => 'Edit Author: ' . $author->name,
+        ]);
+    }
+
+    public function updateAuthor(Request $request, Author $author)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'url' => 'nullable|url',
+        ]);
+
+        $author->update($request->only(['name', 'url']));
+        return redirect()->route('admin.dashboard')->with('success', 'Author updated successfully.');
+    }
+
     public function destroyAuthor(Author $author)
     {
         $author->delete();
@@ -45,6 +66,26 @@ class AdminController extends Controller
 
         Genre::create($request->only(['name']));
         return redirect()->route('admin.dashboard')->with('success', 'Genre created successfully.');
+    }
+
+    public function editGenre(Genre $genre)
+    {
+        return view('admin.edit-content-data', [
+            'entity' => $genre,
+            'entity_type' => 'genre',
+            'route' => 'admin.genres.update',
+            'title' => 'Edit Genre: ' . $genre->name,
+        ]);
+    }
+
+    public function updateGenre(Request $request, Genre $genre)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $genre->update($request->only(['name']));
+        return redirect()->route('admin.dashboard')->with('success', 'Genre updated successfully.');
     }
 
     public function destroyGenre(Genre $genre)
@@ -62,6 +103,27 @@ class AdminController extends Controller
 
         Society::create($request->only(['name', 'url']));
         return redirect()->route('admin.dashboard')->with('success', 'Society created successfully.');
+    }
+
+    public function editSociety(Society $society)
+    {
+        return view('admin.edit-content-data', [
+            'entity' => $society,
+            'entity_type' => 'society',
+            'route' => 'admin.societies.update',
+            'title' => 'Edit Society: ' . $society->name,
+        ]);
+    }
+
+    public function updateSociety(Request $request, Society $society)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'url' => 'nullable|url',
+        ]);
+
+        $society->update($request->only(['name', 'url']));
+        return redirect()->route('admin.dashboard')->with('success', 'Society updated successfully.');
     }
 
     public function destroySociety(Society $society)
