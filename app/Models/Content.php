@@ -3,23 +3,26 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Content extends Model
 {
-    protected $fillable = ['type', 'title', 'description', 'url'];
+    use HasFactory;
 
-    public function genres()
-    {
-        return $this->belongsToMany(Genre::class, 'contents_genres');
-    }
+    protected $fillable = ['type', 'title', 'description', 'url'];
 
     public function authors()
     {
-        return $this->belongsToMany(Author::class, 'authors_contents');
+        return $this->belongsToMany(Author::class);
+    }
+
+    public function genres()
+    {
+        return $this->belongsToMany(Genre::class);
     }
 
     public function societies()
     {
-        return $this->belongsToMany(Society::class, 'contents_societies');
+        return $this->belongsToMany(Society::class);
     }
 }

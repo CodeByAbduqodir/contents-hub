@@ -3,13 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Society extends Model
 {
+    use HasFactory;
+
     protected $fillable = ['name', 'url'];
 
     public function contents()
     {
-        return $this->belongsToMany(Content::class, 'contents_societies');
+        return $this->belongsToMany(Content::class);
     }
 }

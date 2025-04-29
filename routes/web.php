@@ -15,7 +15,7 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::post('logout', [CustomAuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-    Route::get('contents', [ContentController::class, 'index'])->name('contents.index'); 
+    Route::get('contents', [ContentController::class, 'index'])->name('contents.index');
     Route::get('contents/create', [ContentController::class, 'create'])->name('contents.create');
     Route::post('contents', [ContentController::class, 'store'])->name('contents.store');
     Route::get('contents/{content}/edit', [ContentController::class, 'edit'])->name('contents.edit')->where('content', '[0-9]+');
@@ -27,11 +27,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
     Route::post('/admin/authors', [AdminController::class, 'storeAuthor'])->name('admin.authors.store');
+    Route::get('/admin/authors/{author}/edit', [AdminController::class, 'editAuthor'])->name('admin.authors.edit');
+    Route::put('/admin/authors/{author}', [AdminController::class, 'updateAuthor'])->name('admin.authors.update');
     Route::delete('/admin/authors/{author}', [AdminController::class, 'destroyAuthor'])->name('admin.authors.destroy');
 
     Route::post('/admin/genres', [AdminController::class, 'storeGenre'])->name('admin.genres.store');
+    Route::get('/admin/genres/{genre}/edit', [AdminController::class, 'editGenre'])->name('admin.genres.edit');
+    Route::put('/admin/genres/{genre}', [AdminController::class, 'updateGenre'])->name('admin.genres.update');
     Route::delete('/admin/genres/{genre}', [AdminController::class, 'destroyGenre'])->name('admin.genres.destroy');
 
     Route::post('/admin/societies', [AdminController::class, 'storeSociety'])->name('admin.societies.store');
+    Route::get('/admin/societies/{society}/edit', [AdminController::class, 'editSociety'])->name('admin.societies.edit');
+    Route::put('/admin/societies/{society}', [AdminController::class, 'updateSociety'])->name('admin.societies.update');
     Route::delete('/admin/societies/{society}', [AdminController::class, 'destroySociety'])->name('admin.societies.destroy');
 });

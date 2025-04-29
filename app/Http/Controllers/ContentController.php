@@ -10,10 +10,45 @@ use Illuminate\Http\Request;
 
 class ContentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $contents = Content::with(['authors', 'genres', 'societies'])->paginate(10);
-        return view('contents.index', compact('contents'));
+        $query = Content::with(['authors', 'genres', 'societies']);
+
+        if ($request->has('type') && $request->type !== '') {
+            $query->where('type', $request->type);
+        }
+
+        if ($request->has('authors') && is_array($request->authors)) {
+            $query->whereHas('authors', function ($q) use ($request) {
+                $q->whereIn('authors.id', $request->authors);
+            });
+        }
+
+        if ($request->has('genres') && is_array($request->genres)) {
+            $query->whereHas('genres', function ($q) use ($request) {
+                $q->whereIn('genres.id', $request->genres);
+            });
+        }
+
+        if ($request->has('societies') && is_array($request->societies)) {
+            $query->whereHas('societies', function ($q) use ($request) {
+                $q->whereIn('societies.id', $request->societies);
+            });
+        }
+
+        $contents = $query->paginate(10);
+
+        $authors = Author::all();
+        $genres = Genre::all();
+        $societies = Society::all();
+
+        return view('welcome', compact('contents', 'authors', 'genres', 'societies'));
+    }
+
+    public function show(Content $content)
+    {
+        $content->load(['authors', 'genres', 'societies']);
+        return view('contents.show', compact('content'));
     }
 
     public function create()
@@ -32,21 +67,19 @@ class ContentController extends Controller
             'description' => 'nullable|string',
             'url' => 'nullable|url',
             'authors' => 'required|array',
+            'authors.*' => 'exists:authors,id',
             'genres' => 'required|array',
+            'genres.*' => 'exists:genres,id',
             'societies' => 'required|array',
+            'societies.*' => 'exists:societies,id',
         ]);
 
         $content = Content::create($request->only(['type', 'title', 'description', 'url']));
-        $content->authors()->attach($request->input('authors'));
-        $content->genres()->attach($request->input('genres'));
-        $content->societies()->attach($request->input('societies'));
+        $content->authors()->sync($request->authors);
+        $content->genres()->sync($request->genres);
+        $content->societies()->sync($request->societies);
 
-        return redirect()->route('contents.index')->with('success', 'Content created successfully.');
-    }
-
-    public function show(Content $content)
-    {
-        return view('contents.show', compact('content'));
+        return redirect()->route('home')->with('success', 'Content created successfully.');
     }
 
     public function edit(Content $content)
@@ -65,14 +98,17 @@ class ContentController extends Controller
             'description' => 'nullable|string',
             'url' => 'nullable|url',
             'authors' => 'required|array',
+            'authors.*' => 'exists:authors,id',
             'genres' => 'required|array',
+            'genres.*' => 'exists:genres,id',
             'societies' => 'required|array',
+            'societies.*' => 'exists:societies,id',
         ]);
 
         $content->update($request->only(['type', 'title', 'description', 'url']));
-        $content->authors()->sync($request->input('authors'));
-        $content->genres()->sync($request->input('genres'));
-        $content->societies()->sync($request->input('societies'));
+        $content->authors()->sync($request->authors);
+        $content->genres()->sync($request->genres);
+        $content->societies()->sync($request->societies);
 
         return redirect()->route('contents.index')->with('success', 'Content updated successfully.');
     }

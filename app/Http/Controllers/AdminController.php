@@ -10,14 +10,38 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function dashboard()
+    public function dashboard(Request $request)
     {
-        $contents = Content::with(['authors', 'genres', 'societies'])->paginate(10);
+        $contentQuery = Content::with(['authors', 'genres', 'societies']);
+        if ($request->has('type') && $request->type !== '') {
+            $contentQuery->where('type', $request->type);
+        }
+        if ($request->has('authors') && is_array($request->authors)) {
+            $contentQuery->whereHas('authors', function ($q) use ($request) {
+                $q->whereIn('authors.id', $request->authors);
+            });
+        }
+        if ($request->has('genres') && is_array($request->genres)) {
+            $contentQuery->whereHas('genres', function ($q) use ($request) {
+                $q->whereIn('genres.id', $request->genres);
+            });
+        }
+        if ($request->has('societies') && is_array($request->societies)) {
+            $contentQuery->whereHas('societies', function ($q) use ($request) {
+                $q->whereIn('societies.id', $request->societies);
+            });
+        }
+        $contents = $contentQuery->paginate(10);
+
         $authors = Author::paginate(10);
         $genres = Genre::paginate(10);
         $societies = Society::paginate(10);
 
-        return view('admin.dashboard', compact('contents', 'authors', 'genres', 'societies'));
+        $allAuthors = Author::all();
+        $allGenres = Genre::all();
+        $allSocieties = Society::all();
+
+        return view('admin.dashboard', compact('contents', 'authors', 'genres', 'societies', 'allAuthors', 'allGenres', 'allSocieties'));
     }
 
     public function storeAuthor(Request $request)
