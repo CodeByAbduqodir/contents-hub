@@ -1,0 +1,75 @@
+[90m= [39m[34;4mIlluminate\Database\Eloquent\Collection[39;24m {#5309
+    [34mall[39m: [
+      [34;4mApp\Models\Society[39;24m {#5314
+        [34mname[39m: "[32mKoch, Ankunding and Balistreri[39m",
+        [34murl[39m: [36mnull[39m,
+        [34mcreated_at[39m: "[32m2025-04-29 13:24:25[39m",
+        [34mupdated_at[39m: "[32m2025-04-29 13:24:25[39m",
+        [34mid[39m: [35m1[39m,
+      },
+      [34;4mApp\Models\Society[39;24m {#5321
+        [34mname[39m: "[32mHarber, Kuhn and Bartoletti[39m",
+        [34murl[39m: "[32mhttp://www.gutmann.com/[39m",
+        [34mcreated_at[39m: "[32m2025-04-29 13:24:25[39m",
+        [34mupdated_at[39m: "[32m2025-04-29 13:24:25[39m",
+        [34mid[39m: [35m2[39m,
+      },
+      [34;4mApp\Models\Society[39;24m {#5312
+        [34mname[39m: "[32mLittel and Sons[39m",
+        [34murl[39m: "[32mhttps://cummings.com/cupiditate-laboriosam-et-recusandae-et.html[39m",
+        [34mcreated_at[39m: "[32m2025-04-29 13:24:25[39m",
+        [34mupdated_at[39m: "[32m2025-04-29 13:24:25[39m",
+        [34mid[39m: [35m3[39m,
+      },
+      [34;4mApp\Models\Society[39;24m {#5316
+        [34mname[39m: "[32mSchmeler-Gislason[39m",
+        [34murl[39m: [36mnull[39m,
+        [34mcreated_at[39m: "[32m2025-04-29 13:24:25[39m",
+        [34mupdated_at[39m: "[32m2025-04-29 13:24:25[39m",
+        [34mid[39m: [35m4[39m,
+      },
+      [34;4mApp\Models\Society[39;24m {#5310
+        [34mname[39m: "[32mHerzog, Lynch and Hettinger[39m",
+        [34murl[39m: [36mnull[39m,
+        [34mcreated_at[39m: "[32m2025-04-29 13:24:25[39m",
+        [34mupdated_at[39m: "[32m2025-04-29 13:24:25[39m",
+        [34mid[39m: [35m5[39m,
+      },
+      [34;4mApp\Models\Society[39;24m {#5306
+        [34mname[39m: "[32mPurdy Ltd[39m",
+        [34murl[39m: [36mnull[39m,
+        [34mcreated_at[39m: "[32m2025-04-29 13:24:25[39m",
+        [34mupdated_at[39m: "[32m2025-04-29 13:24:25[39m",
+        [34mid[39m: [35m6[39m,
+      },
+      [34;4mApp\Models\Society[39;24m {#1318
+        [34mname[39m: "[32mTillman-Lockman[39m",
+        [34murl[39m: "[32mhttps://kohler.info/ex-exercitationem-neque-cumque-nostrum.html[39m",
+        [34mcreated_at[39m: "[32m2025-04-29 13:24:25[39m",
+        [34mupdated_at[39m: "[32m2025-04-29 13:24:25[39m",
+        [34mid[39m: [35m7[39m,
+      },
+      [34;4mApp\Models\Society[39;24m {#5317
+        [34mname[39m: "[32mBarton LLC[39m",
+        [34murl[39m: [36mnull[39m,
+        [34mcreated_at[39m: "[32m2025-04-29 13:24:25[39m",
+        [34mupdated_at[39m: "[32m2025-04-29 13:24:25[39m",
+        [34mid[39m: [35m8[39m,
+      },
+      [34;4mApp\Models\Society[39;24m {#5315
+        [34mname[39m: "[32mHegmann-Russel[39m",
+        [34murl[39m: [36mnull[39m,
+        [34mcreated_at[39m: "[32m2025-04-29 13:24:25[39m",
+        [34mupdated_at[39m: "[32m2025-04-29 13:24:25[39m",
+        [34mid[39m: [35m9[39m,
+      },
+      [34;4mApp\Models\Society[39;24m {#5311
+        [34mname[39m: "[32mO'Conner LLC[39m",
+        [34murl[39m: [36mnull[39m,
+        [34mcreated_at[39m: "[32m2025-04-29 13:24:25[39m",
+        [34mupdated_at[39m: "[32m2025-04-29 13:24:25[39m",
+        [34mid[39m: [35m10[39m,
+      },
+    ],
+  }
+
