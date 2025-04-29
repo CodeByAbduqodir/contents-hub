@@ -61,16 +61,16 @@ class ContentController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'type' => 'required|in:video,book,audio',
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'url' => 'nullable|url',
-            'authors' => 'required|array',
+            'authors' => 'required|array|min:1',
             'authors.*' => 'exists:authors,id',
-            'genres' => 'required|array',
+            'genres' => 'required|array|min:1',
             'genres.*' => 'exists:genres,id',
-            'societies' => 'required|array',
+            'societies' => 'required|array|min:1',
             'societies.*' => 'exists:societies,id',
         ]);
 
@@ -92,16 +92,16 @@ class ContentController extends Controller
 
     public function update(Request $request, Content $content)
     {
-        $request->validate([
+        $validated = $request->validate([
             'type' => 'required|in:video,book,audio',
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'url' => 'nullable|url',
-            'authors' => 'required|array',
+            'authors' => 'required|array|min:1',
             'authors.*' => 'exists:authors,id',
-            'genres' => 'required|array',
+            'genres' => 'required|array|min:1',
             'genres.*' => 'exists:genres,id',
-            'societies' => 'required|array',
+            'societies' => 'required|array|min:1',
             'societies.*' => 'exists:societies,id',
         ]);
 

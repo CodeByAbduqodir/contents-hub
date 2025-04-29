@@ -28,8 +28,10 @@
             </div>
         @endif
 
+        <!-- Секция контента -->
         <div class="mb-5">
             <h2 class="mb-3">Manage Content</h2>
+
             <form method="GET" action="{{ route('admin.dashboard') }}" class="mb-4">
                 <div class="row g-3">
                     <div class="col-md-3">
@@ -130,18 +132,29 @@
             @endif
         </div>
 
+        <!-- Секция авторов -->
         <div class="mb-5">
             <h2 class="mb-3">Manage Authors</h2>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <form action="{{ route('admin.authors.store') }}" method="POST" class="mb-3">
                 @csrf
                 <div class="row g-3">
                     <div class="col-md-4">
                         <label for="author_name" class="form-label">Name:</label>
-                        <input type="text" name="name" id="author_name" class="form-control" required>
+                        <input type="text" name="name" id="author_name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
                     </div>
                     <div class="col-md-4">
                         <label for="author_url" class="form-label">URL (optional):</label>
-                        <input type="url" name="url" id="author_url" class="form-control">
+                        <input type="url" name="url" id="author_url" class="form-control @error('url') is-invalid @enderror" value="{{ old('url') }}">
                     </div>
                     <div class="col-md-4 d-flex align-items-end">
                         <button type="submit" class="btn btn-success">Add Author</button>
@@ -185,14 +198,25 @@
             @endif
         </div>
 
+        <!-- Секция жанров -->
         <div class="mb-5">
             <h2 class="mb-3">Manage Genres</h2>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <form action="{{ route('admin.genres.store') }}" method="POST" class="mb-3">
                 @csrf
                 <div class="row g-3">
                     <div class="col-md-4">
                         <label for="genre_name" class="form-label">Name:</label>
-                        <input type="text" name="name" id="genre_name" class="form-control" required>
+                        <input type="text" name="name" id="genre_name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
                     </div>
                     <div class="col-md-4 d-flex align-items-end">
                         <button type="submit" class="btn btn-success">Add Genre</button>
@@ -234,18 +258,29 @@
             @endif
         </div>
 
+        <!-- Секция сообществ -->
         <div class="mb-5">
             <h2 class="mb-3">Manage Societies</h2>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <form action="{{ route('admin.societies.store') }}" method="POST" class="mb-3">
                 @csrf
                 <div class="row g-3">
                     <div class="col-md-4">
                         <label for="society_name" class="form-label">Name:</label>
-                        <input type="text" name="name" id="society_name" class="form-control" required>
+                        <input type="text" name="name" id="society_name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
                     </div>
                     <div class="col-md-4">
                         <label for="society_url" class="form-label">URL (optional):</label>
-                        <input type="url" name="url" id="society_url" class="form-control">
+                        <input type="url" name="url" id="society_url" class="form-control @error('url') is-invalid @enderror" value="{{ old('url') }}">
                     </div>
                     <div class="col-md-4 d-flex align-items-end">
                         <button type="submit" class="btn btn-success">Add Society</button>

@@ -1,48 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title }}</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        .auth-links { margin-bottom: 20px; }
-        .form-group { margin-bottom: 15px; }
-    </style>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-    <div class="auth-links">
-        @auth
-            <span>Welcome, {{ Auth::user()->name }}!</span>
-            <a href="{{ route('admin.dashboard') }}">Admin Dashboard</a> |
-            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
-                @csrf
-                <button type="submit">Logout</button>
-            </form>
-        @else
-            <a href="{{ route('login') }}">Login</a>
-        @endauth
-    </div>
+    <div class="container mt-4">
+        <h1>{{ $title }}</h1>
 
-    <h1>{{ $title }}</h1>
-
-    <form action="{{ route($route, $entity->id) }}" method="POST">
-        @csrf
-        @method('PUT')
-
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" name="name" id="name" value="{{ $entity->name }}" required>
-        </div>
-
-        @if ($entity_type === 'author' || $entity_type === 'society')
-            <div class="form-group">
-                <label for="url">URL (optional):</label>
-                <input type="url" name="url" id="url" value="{{ $entity->url }}">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
         @endif
 
-        <button type="submit">Update {{ ucfirst($entity_type) }}</button>
-    </form>
+        <form action="{{ route($route, $entity->id) }}" method="POST">
+            @csrf
+            @method('PUT')
 
-    <a href="{{ route('admin.dashboard') }}">Back to Dashboard</a>
+            @if ($entity_type === 'author' || $entity_type === 'society')
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="name" class="form-label">Name:</label>
+                        <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $entity->name) }}">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="url" class="form-label">URL (optional):</label>
+                        <input type="url" name="url" id="url" class="form-control @error('url') is-invalid @enderror" value="{{ old('url', $entity->url) }}">
+                    </div>
+                </div>
+            @else
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="name" class="form-label">Name:</label>
+                        <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $entity->name) }}">
+                    </div>
+                </div>
+            @endif
+
+            <div class="mt-3">
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

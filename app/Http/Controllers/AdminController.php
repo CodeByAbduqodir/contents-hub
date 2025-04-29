@@ -46,7 +46,7 @@ class AdminController extends Controller
 
     public function storeAuthor(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'url' => 'nullable|url',
         ]);
@@ -67,7 +67,7 @@ class AdminController extends Controller
 
     public function updateAuthor(Request $request, Author $author)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'url' => 'nullable|url',
         ]);
@@ -84,7 +84,7 @@ class AdminController extends Controller
 
     public function storeGenre(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
         ]);
 
@@ -104,7 +104,7 @@ class AdminController extends Controller
 
     public function updateGenre(Request $request, Genre $genre)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
         ]);
 
@@ -120,7 +120,7 @@ class AdminController extends Controller
 
     public function storeSociety(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'url' => 'nullable|url',
         ]);
@@ -141,7 +141,7 @@ class AdminController extends Controller
 
     public function updateSociety(Request $request, Society $society)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'url' => 'nullable|url',
         ]);
