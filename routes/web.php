@@ -1,43 +1,38 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ContentController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CustomAuthenticatedSessionController;
+   use App\Http\Controllers\AdminController;
+   use App\Http\Controllers\ContentController;
+   use App\Http\Controllers\ProfileController;
+   use Illuminate\Support\Facades\Route;
 
-Route::get('/', [ContentController::class, 'index'])->name('home');
+   Route::get('/', [ContentController::class, 'index'])->name('welcome');
 
-Route::middleware('guest')->group(function () {
-    Route::get('login', [CustomAuthenticatedSessionController::class, 'create'])->name('login');
-    Route::post('login', [CustomAuthenticatedSessionController::class, 'store']);
-});
+   Route::get('/dashboard', function () {
+       return view('dashboard');
+   })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::post('logout', [CustomAuthenticatedSessionController::class, 'destroy'])->name('logout');
+   Route::middleware('auth')->group(function () {
+       Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+       Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+       Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+   });
 
-    Route::get('contents', [ContentController::class, 'index'])->name('contents.index');
-    Route::get('contents/create', [ContentController::class, 'create'])->name('contents.create');
-    Route::post('contents', [ContentController::class, 'store'])->name('contents.store');
-    Route::get('contents/{content}/edit', [ContentController::class, 'edit'])->name('contents.edit')->where('content', '[0-9]+');
-    Route::put('contents/{content}', [ContentController::class, 'update'])->name('contents.update')->where('content', '[0-9]+');
-    Route::delete('contents/{content}', [ContentController::class, 'destroy'])->name('contents.destroy')->where('content', '[0-9]+');
+   Route::prefix('admin')->middleware('auth')->group(function () {
+       Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
+       Route::post('/content', [AdminController::class, 'storeContent'])->name('admin.storeContent');
+       Route::delete('/content/{id}', [AdminController::class, 'destroyContent'])->name('admin.destroyContent');
 
-    Route::get('/contents/{content}', [ContentController::class, 'show'])->name('contents.show')->where('content', '[0-9]+');
+       Route::get('/edit-authors', [AdminController::class, 'showAuthors'])->name('admin.editAuthors');
+       Route::post('/authors', [AdminController::class, 'storeAuthor'])->name('admin.storeAuthor');
+       Route::delete('/author/{id}', [AdminController::class, 'destroyAuthor'])->name('admin.destroyAuthor');
 
-    Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+       Route::get('/edit-genres', [AdminController::class, 'showGenres'])->name('admin.editGenres');
+       Route::post('/genres', [AdminController::class, 'storeGenre'])->name('admin.storeGenre');
+       Route::delete('/genre/{id}', [AdminController::class, 'destroyGenre'])->name('admin.destroyGenre');
 
-    Route::post('/admin/authors', [AdminController::class, 'storeAuthor'])->name('admin.authors.store');
-    Route::get('/admin/authors/{author}/edit', [AdminController::class, 'editAuthor'])->name('admin.authors.edit');
-    Route::put('/admin/authors/{author}', [AdminController::class, 'updateAuthor'])->name('admin.authors.update');
-    Route::delete('/admin/authors/{author}', [AdminController::class, 'destroyAuthor'])->name('admin.authors.destroy');
+       Route::get('/edit-societies', [AdminController::class, 'showSocieties'])->name('admin.editSocieties');
+       Route::post('/societies', [AdminController::class, 'storeSociety'])->name('admin.storeSociety');
+       Route::delete('/society/{id}', [AdminController::class, 'destroySociety'])->name('admin.destroySociety');
+   });
 
-    Route::post('/admin/genres', [AdminController::class, 'storeGenre'])->name('admin.genres.store');
-    Route::get('/admin/genres/{genre}/edit', [AdminController::class, 'editGenre'])->name('admin.genres.edit');
-    Route::put('/admin/genres/{genre}', [AdminController::class, 'updateGenre'])->name('admin.genres.update');
-    Route::delete('/admin/genres/{genre}', [AdminController::class, 'destroyGenre'])->name('admin.genres.destroy');
-
-    Route::post('/admin/societies', [AdminController::class, 'storeSociety'])->name('admin.societies.store');
-    Route::get('/admin/societies/{society}/edit', [AdminController::class, 'editSociety'])->name('admin.societies.edit');
-    Route::put('/admin/societies/{society}', [AdminController::class, 'updateSociety'])->name('admin.societies.update');
-    Route::delete('/admin/societies/{society}', [AdminController::class, 'destroySociety'])->name('admin.societies.destroy');
-});
+   require __DIR__.'/auth.php';

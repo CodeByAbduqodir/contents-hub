@@ -2,38 +2,35 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Database\Factories\ContentFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Content extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['type', 'title', 'description', 'url'];
+    protected $fillable = [
+        'title',
+        'description',
+        'author_id',
+        'genre_id',
+        'society_id',
+        'type',
+        'url',
+    ];
 
-    public function authors()
+    public function author()
     {
-        return $this->belongsToMany(Author::class, 'author_content', 'content_id', 'author_id');
+        return $this->belongsTo(Author::class);
     }
 
-    public function genres()
+    public function genre()
     {
-        return $this->belongsToMany(Genre::class, 'content_genre', 'content_id', 'genre_id');
+        return $this->belongsTo(Genre::class);
     }
 
-    public function societies()
+    public function society()
     {
-        return $this->belongsToMany(Society::class, 'content_society', 'content_id', 'society_id');
-    }
-
-    /**
-     * Get the factory instance for the model.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    protected static function newFactory()
-    {
-        return ContentFactory::new();
+        return $this->belongsTo(Society::class);
     }
 }
